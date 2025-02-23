@@ -3,6 +3,7 @@ package com.example.QUIZ.CONTROLLER;
 import com.example.QUIZ.ENTITY.Questions;
 import com.example.QUIZ.SERVICES.Questionservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +17,10 @@ public class Quizcontroller {
     Questionservice questionservice;
 
     @GetMapping("/questions")
-    public List<Questions> questions(){
-        List<Questions> questions = questionservice.getall();
+    public ResponseEntity<List<Questions>> questions(){
+        return questionservice.getall();
 //        System.out.println(questions);
-        return questions;
+//        return questions;
     }
 
     @GetMapping("/category/{level}")
