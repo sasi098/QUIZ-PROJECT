@@ -96,7 +96,26 @@ public class Questionservice {
         return inboxalldao.getallinboxes();
     }
 
-    public List<Allquestions> getquestionfromname(String name) {
+    public List<Allquestions> getquestionfromname(int inboxid) {
+        Optional<Inboxall> inbox1 = inboxalldao.findById(inboxid);
+
+        List<Allquestions> questions = inbox1.get().getAllquestions();
+
+        return questions;
+    }
+
+    public List<Allquestions> deletequesfrominbox(int inboxid, int quesid) {
+        Optional<Inboxall> inbox1 = inboxalldao.findById(inboxid);
+        Inboxall inbox = inbox1.get();
+        List<Allquestions> allquestions  = inbox.getAllquestions();
+        boolean removed = allquestions.removeIf(question -> question.getId() == quesid);
+
+        if(removed){
+            inboxalldao.save(inbox);
+            return allquestions;
+        }
+
+        return allquestions;
 
     }
 }

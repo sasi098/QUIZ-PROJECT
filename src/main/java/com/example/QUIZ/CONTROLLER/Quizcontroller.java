@@ -72,9 +72,14 @@ public class Quizcontroller {
         return questionservice.getallinboxes();
     }
 
-    @GetMapping("/inbox/{name}")
-    public List<Allquestions> getqustionforminbox(@PathVariable String name){
-        return questionservice.getquestionfromname(name);
+    @GetMapping("/inboxes/{inboxid}")
+    public List<Allquestions> getqustionforminbox(@PathVariable int inboxid){
+        return questionservice.getquestionfromname(inboxid);
+    }
+
+    @GetMapping("/inboxes/delete/{inboxid}/{quesid}")
+    public List<Allquestions> dletequesfrominbox(@PathVariable int inboxid,@PathVariable int quesid){
+        return questionservice.deletequesfrominbox(inboxid,quesid);
     }
 
 //    @GetMapping("/create/{name}")

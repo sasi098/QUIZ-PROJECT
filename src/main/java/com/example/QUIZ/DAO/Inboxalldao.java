@@ -16,6 +16,6 @@ public interface Inboxalldao extends JpaRepository<Inboxall,Integer> {
 
     Inboxall findByTitle(String title);
 
-    @Query(value = "select title from inboxall group by title",nativeQuery = true)
+    @Query(value = "select id,title from inboxall",nativeQuery = true)
     List<InboxWrapper> getallinboxes();
 }

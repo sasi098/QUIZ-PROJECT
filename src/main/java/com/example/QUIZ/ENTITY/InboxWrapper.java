@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InboxWrapper {
 
+    private int id;
+
     private String inboxname;
 }
